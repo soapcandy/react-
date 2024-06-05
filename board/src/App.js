@@ -9,8 +9,8 @@ function App() {
   };
   return (
     <div>
-      <BoardList insertData={insertData}></BoardList>
-      <BoardInsert insert={handleInsert}></BoardInsert>
+      <BoardInsert insert={handleInsert} />
+      <BoardList insertData={insertData} />
     </div>
   );
 }
