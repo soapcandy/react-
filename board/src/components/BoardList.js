@@ -5,6 +5,7 @@ function BoardList({ insertData, setSelectedItem }) {
     setSelectedItem(item);
   };
 
+  // 페이지 네이션 추가
   return (
     <div className="board-list">
       <table>
@@ -18,7 +19,9 @@ function BoardList({ insertData, setSelectedItem }) {
         <tbody>
           {insertData.map((item) => (
             <tr key={item.id}>
-              <td onClick={() => handleClick(item)}>{item.title}</td>
+              <td className="list-title" onClick={() => handleClick(item)}>
+                {item.title}
+              </td>
               <td>{item.user}</td>
               <td>{item.date}</td>
             </tr>

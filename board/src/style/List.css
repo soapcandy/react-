@@ -26,11 +26,10 @@
   background-color: #f9f9f9;
 }
 
-.board-list tr:hover {
+.board-list td.list-title:hover {
   background-color: #ddd;
-  cursor: pointer;
 }
 
-.board-list td {
+.board-list td.list-title {
   cursor: pointer;
 }
