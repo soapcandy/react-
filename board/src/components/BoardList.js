@@ -20,8 +20,8 @@ function BoardList({ insertData }) {
           </tr>
         </thead>
         <tbody>
-          {insertData.map((item, index) => (
-            <tr key={index}>
+          {insertData.map((item) => (
+            <tr key={item.id}>
               <td onClick={() => handleClick(item)}>{item.title}</td>
               <td>{item.user}</td>
               <td>{item.date}</td>

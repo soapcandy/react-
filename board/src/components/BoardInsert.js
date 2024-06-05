@@ -5,11 +5,13 @@ function BoardInsert({ insert }) {
   const [title, setTitle] = useState("");
   const [user, setUser] = useState("");
   const [content, setContent] = useState("");
+  const [id, setId] = useState(0);
 
   const handleInsert = () => {
+    setId(id + 1);
     const date = FomattedDate();
 
-    insert({ title, user, content, date });
+    insert({ id, title, user, content, date });
   };
 
   return (
