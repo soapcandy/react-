@@ -1,13 +1,8 @@
-import { useState } from "react";
-import BoardDetail from "./BoardDetail";
 import "../style/List.css";
 
-function BoardList({ insertData }) {
-  const [selectItem, setSelectItem] = useState();
-  console.log(selectItem);
-
+function BoardList({ insertData, setSelectedItem }) {
   const handleClick = (item) => {
-    setSelectItem(item);
+    setSelectedItem(item);
   };
 
   return (
@@ -30,7 +25,6 @@ function BoardList({ insertData }) {
           ))}
         </tbody>
       </table>
-      <BoardDetail item={selectItem} />
     </div>
   );
 }
