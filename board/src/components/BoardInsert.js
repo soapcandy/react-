@@ -1,24 +1,15 @@
 import { useState } from "react";
+import FomattedDate from "./FomattedDate";
 
 function BoardInsert({ insert }) {
   const [title, setTitle] = useState("");
   const [user, setUser] = useState("");
   const [content, setContent] = useState("");
 
-  const digits = (num) => {
-    return num.toString().padStart(2, "0"); // 자릿 수 2자리
-  };
-
   const handleInsert = () => {
-    const date = new Date(); // 현재 시간 입력
-    const formattedDate = `${date.getFullYear()} 
-    -${digits(date.getMonth() + 1)}
-    -${digits(date.getDate())}
-    ${digits(date.getHours())}
-    :${digits(date.getMinutes())}:
-    ${digits(date.getSeconds())}`;
+    const date = FomattedDate();
 
-    insert({ title, user, content, date: formattedDate });
+    insert({ title, user, content, date });
   };
 
   return (
