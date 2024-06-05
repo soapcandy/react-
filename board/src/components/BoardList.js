@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BoardDetail from "./BoardDetail";
+import "../style/List.css";
 
 function BoardList({ insertData }) {
   const [selectItem, setSelectItem] = useState();
@@ -10,7 +11,7 @@ function BoardList({ insertData }) {
   };
 
   return (
-    <div>
+    <div className="board-list">
       <table>
         <thead>
           <tr>

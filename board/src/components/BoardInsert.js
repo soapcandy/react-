@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FomattedDate from "./FomattedDate";
+import "../style/Insert.css";
 
 function BoardInsert({ insert }) {
   const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ function BoardInsert({ insert }) {
   };
 
   return (
-    <div>
+    <div className="board-insert">
       <div>
         제목
         <input

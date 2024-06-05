@@ -1,0 +1,36 @@
+.board-list {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.board-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.board-list th,
+.board-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.board-list th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.board-list tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.board-list tr:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.board-list td {
+  cursor: pointer;
+}
