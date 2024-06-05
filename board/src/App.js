@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import BoardList from "./components/BoardList";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const test = [
+    {
+      title: "제목1",
+      user: "작성자1",
+      content: "내용1",
+      date: "2024-06-05",
+    },
+    {
+      title: "제목2",
+      user: "작성자2",
+      content: "내용2",
+      date: "2024-06-06",
+    },
+  ];
+  return <BoardList test={test}></BoardList>;
 }
 
 export default App;
