@@ -1,4 +1,4 @@
-function BoardList({ test }) {
+function BoardList({ insertData }) {
   // 게시판 리스트를 보여준다
 
   return (
@@ -8,7 +8,7 @@ function BoardList({ test }) {
         <th>작성자</th>
         <th>게시일자</th>
       </tr>
-      {test.map((item) => (
+      {insertData.map((item) => (
         <tr>
           <td>{item.title}</td>
           <td>{item.user}</td>
