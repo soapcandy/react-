@@ -13,6 +13,16 @@ function BoardInsert({ insert }) {
     const date = FomattedDate();
 
     insert({ id, title, user, content, date });
+
+    setTitle("");
+    setUser("");
+    setContent("");
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleInsert();
+    }
   };
 
   return (
@@ -41,6 +51,7 @@ function BoardInsert({ insert }) {
           rows="10"
           cols="50"
           onChange={(e) => setContent(e.target.value)}
+          onKeyUp={handleKeyPress}
         ></textarea>
       </div>
       <button onClick={handleInsert}>저장</button>
