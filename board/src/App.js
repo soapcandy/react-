@@ -17,8 +17,8 @@ function App() {
       </div>
       <div className="list">
         <BoardList insertData={insertData} setSelectedItem={setSelectedItem} />
+        {selectedItem && <BoardDetail item={selectedItem} />}
       </div>
-      <div>{selectedItem && <BoardDetail item={selectedItem} />}</div>
     </div>
   );
 }
