@@ -10,13 +10,21 @@ function App() {
   const handleInsert = (item) => {
     setInsertData([...insertData, item]);
   };
+
+  const handleDelete = (id) => {
+    setInsertData(insertData.filter((item) => item.id !== id));
+  };
   return (
     <div className="container">
       <div className="insert">
         <BoardInsert insert={handleInsert} />
       </div>
       <div className="list">
-        <BoardList insertData={insertData} setSelectedItem={setSelectedItem} />
+        <BoardList
+          insertData={insertData}
+          setSelectedItem={setSelectedItem}
+          del={handleDelete}
+        />
         {selectedItem && <BoardDetail item={selectedItem} />}
       </div>
     </div>
