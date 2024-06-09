@@ -14,6 +14,14 @@ function App() {
   const handleDelete = (id) => {
     setInsertData(insertData.filter((item) => item.id !== id));
   };
+
+  const handleSave = (updatedItem) => {
+    setInsertData(
+      insertData.map((item) => (item.id === updatedItem.id ? updatedItem : item))
+    );
+    setSelectedItem(updatedItem);
+  };
+
   return (
     <div className="container">
       <div className="insert">
@@ -25,7 +33,7 @@ function App() {
           setSelectedItem={setSelectedItem}
           del={handleDelete}
         />
-        {selectedItem && <BoardDetail item={selectedItem} />}
+        {selectedItem && <BoardDetail item={selectedItem} onSave={handleSave} />}
       </div>
     </div>
   );
