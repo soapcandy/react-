@@ -7,7 +7,7 @@ const BoardProvider = ({ children }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [edit, setEdit] = useState(false);
 
-  const getHandleInsertItem = (item) => {
+  const getInsertItem = (item) => {
     setBoardItemList([...boardItemList, item]);
   };
 
@@ -33,7 +33,7 @@ const BoardProvider = ({ children }) => {
         boardItemList,
         selectedItem,
         edit,
-        getHandleInsertItem,
+        getInsertItem,
         handleDeleteButton,
         handleModify,
         handleEditClick,

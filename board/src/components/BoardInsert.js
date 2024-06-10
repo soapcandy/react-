@@ -4,7 +4,7 @@ import "../style/Insert.css";
 import BoardContext from "../contexts/BoardContext";
 
 function BoardInsert() {
-  const { getHandleInsertItem } = useContext(BoardContext);
+  const { getInsertItem } = useContext(BoardContext);
 
   const [inputs, setInputs] = useState({
     title: "",
@@ -27,7 +27,7 @@ function BoardInsert() {
     const newId = id + 1;
     const date = fomattedDate();
 
-    getHandleInsertItem({ id: newId, title, user, content, date });
+    getInsertItem({ id: newId, title, user, content, date });
 
     setInputs({
       id: newId,
