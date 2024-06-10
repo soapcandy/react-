@@ -1,7 +1,7 @@
 import "../style/List.css";
 
 function BoardList({ boardItemList, setSelectedItem, handleDeleteButton }) {
-  const handleClick = (item) => {
+  const handleTitleClick = (item) => {
     setSelectedItem(item);
   };
 
@@ -20,7 +20,7 @@ function BoardList({ boardItemList, setSelectedItem, handleDeleteButton }) {
         <tbody>
           {boardItemList.map((item) => (
             <tr key={item.id}>
-              <td className="list-title" onClick={() => handleClick(item)}>
+              <td className="list-title" onClick={() => handleTitleClick(item)}>
                 {item.title}
               </td>
               <td>{item.user}</td>

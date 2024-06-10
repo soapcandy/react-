@@ -12,9 +12,7 @@ function BoardDetail({ item, handleModify }) {
     setEdit(false);
   };
 
-  if (!item) {
-    return null;
-  }
+  if (!item) return null;
 
   return (
     <div className="board-detail">
