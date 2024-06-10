@@ -1,5 +1,4 @@
 import "../style/List.css";
-import BoardDelete from "./BoardDelete";
 
 function BoardList({ boardItemList, setSelectedItem, handleDeleteButton }) {
   const handleClick = (item) => {
@@ -27,11 +26,9 @@ function BoardList({ boardItemList, setSelectedItem, handleDeleteButton }) {
               <td>{item.user}</td>
               <td>{item.date}</td>
               <td>
-                <BoardDelete
-                  handleDeleteButton={handleDeleteButton}
-                  itemId={item.id}
-                  label="지우기"
-                />
+                <button onClick={() => handleDeleteButton(item.id)}>
+                  지우기
+                </button>
               </td>
             </tr>
           ))}
