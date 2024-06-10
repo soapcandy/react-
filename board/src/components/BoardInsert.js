@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FomattedDate from "../utils/FomattedDate";
+import fomattedDate from "../utils/fomattedDate";
 import "../style/Insert.css";
 
 function BoardInsert({ getHandleInsertItem }) {
@@ -10,7 +10,7 @@ function BoardInsert({ getHandleInsertItem }) {
 
   const handleInsert = () => {
     setId(id + 1);
-    const date = FomattedDate();
+    const date = fomattedDate();
 
     getHandleInsertItem({ id, title, user, content, date });
 
