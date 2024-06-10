@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import fomattedDate from "../utils/fomattedDate";
 import "../style/Insert.css";
+import BoardContext from "../contexts/BoardContext";
 
-function BoardInsert({ getHandleInsertItem }) {
+function BoardInsert() {
+  const { getHandleInsertItem } = useContext(BoardContext);
+
   const [inputs, setInputs] = useState({
     title: "",
     user: "",

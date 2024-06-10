@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import "../style/List.css";
+import BoardContext from "../contexts/BoardContext";
 
-function BoardList({ boardItemList, setSelectedItem, handleDeleteButton }) {
+function BoardList() {
+  const { boardItemList, setSelectedItem, handleDeleteButton } =
+    useContext(BoardContext);
+
   const handleTitleClick = (item) => {
     setSelectedItem(item);
   };

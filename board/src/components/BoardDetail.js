@@ -1,28 +1,22 @@
-import { useState } from "react";
+import { useContext } from "react";
 import "../style/Detail.css";
 import BoardEdit from "./BoardEdit";
+import BoardContext from "../contexts/BoardContext";
 
-function BoardDetail({ item, handleModify }) {
-  const [edit, setEdit] = useState(false);
+function BoardDetail() {
+  const { selectedItem, edit, handleEditClick } = useContext(BoardContext);
 
-  const handleEditClick = () => setEdit(true);
-
-  const handleModifySave = (updatedItem) => {
-    handleModify(updatedItem);
-    setEdit(false);
-  };
-
-  if (!item) return null;
+  if (!selectedItem) return null;
 
   return (
     <div className="board-detail">
       {edit ? (
-        <BoardEdit item={item} handleModifySave={handleModifySave} />
+        <BoardEdit item={selectedItem} />
       ) : (
         <>
-          <h3>제목: {item.title}</h3>
-          <div>작성자: {item.user}</div>
-          <div>내용: {item.content}</div>
+          <h3>제목: {selectedItem.title}</h3>
+          <div>작성자: {selectedItem.user}</div>
+          <div>내용: {selectedItem.content}</div>
           <button onClick={handleEditClick}>수정</button>
         </>
       )}

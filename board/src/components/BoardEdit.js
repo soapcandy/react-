@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import BoardContext from "../contexts/BoardContext";
 
-function BoardEdit({ item, handleModifySave }) {
+function BoardEdit({ item, getModifyItem }) {
   const [title, setTitle] = useState(item.title);
   const [user, setUser] = useState(item.user);
   const [content, setContent] = useState(item.content);
+
+  const { handleModify } = useContext(BoardContext);
 
   const handleSaveButton = () => {
     const updatedItem = {
@@ -12,7 +15,7 @@ function BoardEdit({ item, handleModifySave }) {
       user,
       content,
     };
-    handleModifySave(updatedItem);
+    handleModify(updatedItem);
   };
 
   return (
