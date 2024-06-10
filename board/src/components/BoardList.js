@@ -1,7 +1,7 @@
 import "../style/List.css";
 import BoardDelete from "./BoardDelete";
 
-function BoardList({ insertData, setSelectedItem, del }) {
+function BoardList({ boardItemList, setSelectedItem, handleDeleteButton }) {
   const handleClick = (item) => {
     setSelectedItem(item);
   };
@@ -19,7 +19,7 @@ function BoardList({ insertData, setSelectedItem, del }) {
           </tr>
         </thead>
         <tbody>
-          {insertData.map((item) => (
+          {boardItemList.map((item) => (
             <tr key={item.id}>
               <td className="list-title" onClick={() => handleClick(item)}>
                 {item.title}
@@ -27,7 +27,11 @@ function BoardList({ insertData, setSelectedItem, del }) {
               <td>{item.user}</td>
               <td>{item.date}</td>
               <td>
-                <BoardDelete del={del} itemId={item.id} />
+                <BoardDelete
+                  handleDeleteButton={handleDeleteButton}
+                  itemId={item.id}
+                  label="지우기"
+                />
               </td>
             </tr>
           ))}

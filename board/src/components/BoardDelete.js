@@ -1,4 +1,4 @@
-function BoardDelete({ del, itemId }) {
-  return <button onClick={() => del(itemId)}>지우기</button>;
+function BoardDelete({ handleDeleteButton, itemId, label }) {
+  return <button onClick={() => handleDeleteButton(itemId)}>{label}</button>;
 }
 export default BoardDelete;

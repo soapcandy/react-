@@ -1,8 +1,8 @@
 import { useState } from "react";
-import FomattedDate from "./FomattedDate";
+import FomattedDate from "../utils/FomattedDate";
 import "../style/Insert.css";
 
-function BoardInsert({ insert }) {
+function BoardInsert({ getHandleInsertItem }) {
   const [title, setTitle] = useState("");
   const [user, setUser] = useState("");
   const [content, setContent] = useState("");
@@ -12,14 +12,14 @@ function BoardInsert({ insert }) {
     setId(id + 1);
     const date = FomattedDate();
 
-    insert({ id, title, user, content, date });
+    getHandleInsertItem({ id, title, user, content, date });
 
     setTitle("");
     setUser("");
     setContent("");
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyUp = (e) => {
     if (e.key === "Enter") {
       handleInsert();
     }
@@ -51,7 +51,7 @@ function BoardInsert({ insert }) {
           rows="10"
           cols="50"
           onChange={(e) => setContent(e.target.value)}
-          onKeyUp={handleKeyPress}
+          onKeyUp={handleKeyUp}
         ></textarea>
       </div>
       <button onClick={handleInsert}>저장</button>

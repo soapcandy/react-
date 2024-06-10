@@ -2,16 +2,13 @@ import { useState } from "react";
 import "../style/Detail.css";
 import BoardEdit from "./BoardEdit";
 
-function BoardDetail({ item, onSave }) {
-
+function BoardDetail({ item, handleModify }) {
   const [edit, setEdit] = useState(false);
 
-  const handleEditClick = () => {
-    setEdit(true);
-  };
+  const handleEditClick = () => setEdit(true);
 
-  const handleSave = (updatedItem) => {
-    onSave(updatedItem);
+  const handleModifySave = (updatedItem) => {
+    handleModify(updatedItem);
     setEdit(false);
   };
 
@@ -22,7 +19,7 @@ function BoardDetail({ item, onSave }) {
   return (
     <div className="board-detail">
       {edit ? (
-        <BoardEdit item={item} onSave={handleSave} />
+        <BoardEdit item={item} handleModifySave={handleModifySave} />
       ) : (
         <>
           <h3>제목: {item.title}</h3>
