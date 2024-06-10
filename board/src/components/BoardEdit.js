@@ -5,7 +5,7 @@ function BoardEdit({ item, handleModifySave }) {
   const [user, setUser] = useState(item.user);
   const [content, setContent] = useState(item.content);
 
-  const handleSave = () => {
+  const handleSaveButton = () => {
     const updatedItem = {
       ...item,
       title,
@@ -41,7 +41,7 @@ function BoardEdit({ item, handleModifySave }) {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <button onClick={handleSave}>저장</button>
+      <button onClick={handleSaveButton}>저장</button>
     </div>
   );
 }
