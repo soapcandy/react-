@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import fomattedDate from "../utils/fomattedDate";
 import "../style/Insert.css";
 import BoardContext from "../contexts/BoardContext";
+import InputField from "./InputField";
 
 function BoardInsert() {
   const { getInsertItem } = useContext(BoardContext);
@@ -45,31 +46,17 @@ function BoardInsert() {
 
   return (
     <div className="board-insert">
-      <div>
-        제목
-        <input
-          name="title"
-          type="text"
-          value={title}
-          onChange={onChange}
-        ></input>
-      </div>
-      <div>
-        작성자
-        <input name="user" type="text" value={user} onChange={onChange}></input>
-      </div>
-      <div>
-        내용
-        <textarea
-          name="content"
-          value={content}
-          placeholder="내용을 입력하세요"
-          rows="10"
-          cols="50"
-          onChange={onChange}
-          onKeyUp={handleKeyUp}
-        ></textarea>
-      </div>
+      <InputField label="제목" name="title" type="text" value={title} onChange={onChange} />
+      <InputField label="작성자" name="user" type="text" value={user} onChange={onChange} />
+      <InputField
+        label="내용"
+        name="content"
+        type="textarea"
+        value={content}
+        placeholder="내용을 입력하세요"
+        onChange={onChange}
+        onKeyUp={handleKeyUp}
+        />
       <button onClick={handleInsert}>저장</button>
     </div>
   );
