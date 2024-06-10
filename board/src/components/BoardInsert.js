@@ -3,20 +3,35 @@ import fomattedDate from "../utils/fomattedDate";
 import "../style/Insert.css";
 
 function BoardInsert({ getHandleInsertItem }) {
-  const [title, setTitle] = useState("");
-  const [user, setUser] = useState("");
-  const [content, setContent] = useState("");
-  const [id, setId] = useState(0);
+  const [inputs, setInputs] = useState({
+    title: "",
+    user: "",
+    content: "",
+    id: 0,
+  });
+
+  const { title, user, content, id } = inputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
 
   const handleInsert = () => {
-    setId(id + 1);
+    const newId = id + 1;
     const date = fomattedDate();
 
-    getHandleInsertItem({ id, title, user, content, date });
+    getHandleInsertItem({ id: newId, title, user, content, date });
 
-    setTitle("");
-    setUser("");
-    setContent("");
+    setInputs({
+      id: newId,
+      title: "",
+      user: "",
+      content: "",
+    });
   };
 
   const handleKeyUp = (e) => {
@@ -30,27 +45,25 @@ function BoardInsert({ getHandleInsertItem }) {
       <div>
         제목
         <input
+          name="title"
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={onChange}
         ></input>
       </div>
       <div>
         작성자
-        <input
-          type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        ></input>
+        <input name="user" type="text" value={user} onChange={onChange}></input>
       </div>
       <div>
         내용
         <textarea
+          name="content"
           value={content}
           placeholder="내용을 입력하세요"
           rows="10"
           cols="50"
-          onChange={(e) => setContent(e.target.value)}
+          onChange={onChange}
           onKeyUp={handleKeyUp}
         ></textarea>
       </div>
