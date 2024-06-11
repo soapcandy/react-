@@ -14,17 +14,16 @@ const UnorderedList = styled.ul`
   }
 `;
 
-const TaskList = (props) => {
+const TaskList = () => {
   const { tasks } = useTasks();
   return (
-    <UnorderedList {...props}>
+    <UnorderedList>
       {tasks.map((item) => (
         <Task
           key={item.id}
           id={item.id}
           content={item.content}
           complete={item.complete}
-          props={props}
         />
       ))}
     </UnorderedList>

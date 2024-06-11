@@ -41,7 +41,7 @@ const ToggleInput = styled.input`
   }
 `;
 
-const Toggle = ({ on = false, onChange, ...props }) => {
+const Toggle = ({ on = false, onChange }) => {
   const [checked, toggle] = useToggle(on);
 
   const handleChange = (e) => {
@@ -50,7 +50,7 @@ const Toggle = ({ on = false, onChange, ...props }) => {
   };
 
   return (
-    <ToggleContainer {...props}>
+    <ToggleContainer>
       <ToggleInput type="checkbox" onChange={handleChange} checked={checked} />
       <ToggleSwitch />
     </ToggleContainer>

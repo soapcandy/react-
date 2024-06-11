@@ -33,12 +33,15 @@ const RemoveButton = styled.button`
   cursor: pointer;
 `;
 
-const Task = ({ id, content, complete, props }) => {
+const Task = ({ id, content, complete }) => {
   const { updateTask, removeTask } = useTasks();
 
   return (
-    <ListItem {...props}>
-      <Toggle on={complete} onChange={(e) => updateTask(id, e.target.value)} />
+    <ListItem>
+      <Toggle
+        on={complete}
+        onChange={(e) => updateTask(id, e.target.checked)}
+      />
       <Content complete={complete}>{content}</Content>
       <RemoveButton onClick={(e) => removeTask(id)}>삭제</RemoveButton>
     </ListItem>

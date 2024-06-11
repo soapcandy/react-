@@ -28,19 +28,19 @@ const SubmitButton = styled.button`
   cursor: pointer;
 `;
 
-const NewTaskForm = (props) => {
+const NewTaskForm = () => {
   const [task, setTask] = useState("");
   const { addTask } = useTasks();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 기본 동작인 폼 제출 및 페이지 새로고침을 방지
     addTask(task);
     setTask("");
   };
 
   return (
     <div>
-      <Form {...props} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           type="text"
           value={task}
