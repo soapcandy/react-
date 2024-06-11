@@ -21,6 +21,17 @@ const Content = styled.span`
   text-decoration: ${({ complete }) => (complete ? "line-through" : "none")};
 `;
 
+const RemoveButton = styled.button`
+  width: 60px;
+  height: 24px;
+  margin-left: 8px;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  background-color: red;
+  cursor: pointer;
+`;
+
 const Task = ({ id, content, complete, props }) => {
   const updateTask = (id, status) => {
     props.setTasks(
@@ -30,10 +41,15 @@ const Task = ({ id, content, complete, props }) => {
     );
   };
 
+  const removeTask = (id) => {
+    props.setTasks(props.tasks.filter((item) => item.id !== id));
+  };
+
   return (
     <ListItem {...props}>
       <Toggle on={complete} onChange={(e) => updateTask(id, e.target.value)} />
       <Content complete={complete}>{content}</Content>
+      <RemoveButton onClick={(e) => removeTask(id)}>삭제</RemoveButton>
     </ListItem>
   );
 };
