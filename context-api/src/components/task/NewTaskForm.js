@@ -32,6 +32,7 @@ const NewTaskForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    props.addTask(task);
     setTask("");
   };
 
