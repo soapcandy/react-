@@ -1,29 +1,15 @@
-import { useState } from "react";
 import Header from "./components/header/Header";
 import NewTaskForm from "./components/task/NewTaskForm";
 import TaskList from "./components/task/TaskList";
-import { v4 } from "uuid";
+import TaskProvider from "./contexts/TaskProvider";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-
-  const addTask = (content) => {
-    setTasks([
-      ...tasks,
-      {
-        id: v4(),
-        content,
-        complete: false,
-      },
-    ]);
-  };
-
   return (
-    <div>
+    <TaskProvider>
       <Header />
-      <NewTaskForm addTask={addTask} />
-      <TaskList tasks={tasks} setTasks={setTasks} />
-    </div>
+      <NewTaskForm />
+      <TaskList />
+    </TaskProvider>
   );
 }
 

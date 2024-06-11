@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Toggle from "../toggle/Toggle";
+import { useTasks } from "../../contexts/TaskProvider";
 
 const ListItem = styled.li`
   display: flex;
@@ -33,17 +34,7 @@ const RemoveButton = styled.button`
 `;
 
 const Task = ({ id, content, complete, props }) => {
-  const updateTask = (id, status) => {
-    props.setTasks(
-      props.tasks.map((item) =>
-        item.id === id ? { ...item, complete: status } : item
-      )
-    );
-  };
-
-  const removeTask = (id) => {
-    props.setTasks(props.tasks.filter((item) => item.id !== id));
-  };
+  const { updateTask, removeTask } = useTasks();
 
   return (
     <ListItem {...props}>
