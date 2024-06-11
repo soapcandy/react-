@@ -1,4 +1,4 @@
-function FomattedDate() {
+function fomattedDate() {
   const digits = (num) => {
     return num.toString().padStart(2, "0"); // 자릿 수 2자리 입력
   };
@@ -16,4 +16,4 @@ function FomattedDate() {
 
   return formattedDate;
 }
-export default FomattedDate;
+export default fomattedDate;

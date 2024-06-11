@@ -1,22 +1,41 @@
-import { useState } from "react";
-import FomattedDate from "../utils/FomattedDate";
+import { useContext, useState } from "react";
+import fomattedDate from "../utils/fomattedDate";
 import "../style/Insert.css";
+import BoardContext from "../contexts/BoardContext";
+import InputField from "./InputField";
 
-function BoardInsert({ getHandleInsertItem }) {
-  const [title, setTitle] = useState("");
-  const [user, setUser] = useState("");
-  const [content, setContent] = useState("");
-  const [id, setId] = useState(0);
+function BoardInsert() {
+  const { getInsertItem } = useContext(BoardContext);
+
+  const [inputs, setInputs] = useState({
+    title: "",
+    user: "",
+    content: "",
+    id: 0,
+  });
+
+  const { title, user, content, id } = inputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
 
   const handleInsert = () => {
-    setId(id + 1);
-    const date = FomattedDate();
+    const newId = id + 1;
+    const date = fomattedDate();
 
-    getHandleInsertItem({ id, title, user, content, date });
+    getInsertItem({ id: newId, title, user, content, date });
 
-    setTitle("");
-    setUser("");
-    setContent("");
+    setInputs({
+      id: newId,
+      title: "",
+      user: "",
+      content: "",
+    });
   };
 
   const handleKeyUp = (e) => {
@@ -27,33 +46,17 @@ function BoardInsert({ getHandleInsertItem }) {
 
   return (
     <div className="board-insert">
-      <div>
-        제목
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        ></input>
-      </div>
-      <div>
-        작성자
-        <input
-          type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        ></input>
-      </div>
-      <div>
-        내용
-        <textarea
-          value={content}
-          placeholder="내용을 입력하세요"
-          rows="10"
-          cols="50"
-          onChange={(e) => setContent(e.target.value)}
-          onKeyUp={handleKeyUp}
-        ></textarea>
-      </div>
+      <InputField label="제목" name="title" type="text" value={title} onChange={onChange} />
+      <InputField label="작성자" name="user" type="text" value={user} onChange={onChange} />
+      <InputField
+        label="내용"
+        name="content"
+        type="textarea"
+        value={content}
+        placeholder="내용을 입력하세요"
+        onChange={onChange}
+        onKeyUp={handleKeyUp}
+        />
       <button onClick={handleInsert}>저장</button>
     </div>
   );
