@@ -17,13 +17,12 @@ const TaskList = (props) => {
   return (
     <UnorderedList {...props}>
       {props.tasks.map((item) => (
-        <table>
-          <tr key={item.id}>
-            <td>{item.id}</td>
-            <td>{item.content}</td>
-            <td>{item.complete}</td>
-          </tr>
-        </table>
+        <Task
+          key={item.id}
+          id={item.id}
+          content={item.content}
+          complete={item.complete}
+        />
       ))}
     </UnorderedList>
   );
