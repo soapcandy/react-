@@ -22,6 +22,7 @@ const TaskList = (props) => {
           id={item.id}
           content={item.content}
           complete={item.complete}
+          props={props}
         />
       ))}
     </UnorderedList>

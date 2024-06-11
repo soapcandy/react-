@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Toggle from "../toggle/Toggle";
 
 const ListItem = styled.li`
   display: flex;
@@ -20,9 +21,18 @@ const Content = styled.span`
   text-decoration: ${({ complete }) => (complete ? "line-through" : "none")};
 `;
 
-const Task = ({ id, content, complete, ...props }) => {
+const Task = ({ id, content, complete, props }) => {
+  const updateTask = (id, status) => {
+    props.setTasks(
+      props.tasks.map((item) =>
+        item.id === id ? { ...item, complete: status } : item
+      )
+    );
+  };
+
   return (
     <ListItem {...props}>
+      <Toggle on={complete} onChange={(e) => updateTask(id, e.target.value)} />
       <Content complete={complete}>{content}</Content>
     </ListItem>
   );
