@@ -27,8 +27,8 @@ function UseMemoPractice() {
 
   const expensiveValue = useMemo(() => {
     console.log("계산기 작동!!");
-    return count * 2;
-  }, [count]);
+    return count2 * 2;
+  }, [count2]);
 
   console.log("렌더링2 작동!!");
 
