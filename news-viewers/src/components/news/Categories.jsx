@@ -73,9 +73,9 @@ const Categories = () => {
     <CategoriesBlock>
       {categories.map((c) => (
         <Category
-          key={c.name}
-          activeClassName="active"
-          exact={c.name === "all"}
+          key={c.name} // key 부여
+          activeClassName="active" // active라는 CSS클래스 부여
+          exact={c.name === "all"} // c.name이 all 이면 exact
           to={c.name === "all" ? "/" : `/${c.name}`}
         >
           {c.text}
