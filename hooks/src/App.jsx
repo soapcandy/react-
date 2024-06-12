@@ -1,15 +1,18 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 function App() {
   const [posts, setPosts] = useState([]);
 
+  // 빈배열([])로 한번만 실행되게 하지 않으면
+  // 렌더링 -> useEffect -> axios -> data -> setPosts -> post -> 렌더링
+  // 무한반복 될 수 있다
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
       .then(({ data }) => setPosts(data));
-  });
+  }, []);
 
   return (
     <Container>
