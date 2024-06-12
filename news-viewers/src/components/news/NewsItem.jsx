@@ -30,9 +30,7 @@ const NewsItemBlock = styled.div`
   }
 `;
 
-// eslint-disable-next-line react/prop-types
 const NewsItem = ({ article }) => {
-  // eslint-disable-next-line react/prop-types
   const { title, description, url, urlToImage } = article;
   return (
     <NewsItemBlock>
