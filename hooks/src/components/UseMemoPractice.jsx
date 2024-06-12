@@ -1,31 +1,34 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function UseMemoPractice() {
   const [count, setCount] = useState(0);
 
-  // useMemo를 사용하지 않고 factorial 계산
-  const factorial = (() => {
+  // useMemo를 사용하여 factorial 계산
+  const factorial = useMemo(() => {
     console.log("factorial 작동!");
     let fact = 1;
     for (let i = 1; i <= count; i++) {
       fact = fact * i;
     }
     return fact;
-  })();
+  }, [count]);
 
   useEffect(() => {
     console.log(`Factorial of ${count} is ${factorial}`);
     console.log("useEffect 작동!");
-  }, [factorial]);
+  }, [count, factorial]);
 
   console.log("렌더링 작동!");
   // ---------------------------------------------------------------
   const [count2, setCount2] = useState(0);
   const [otherState, setOtherState] = useState(0);
 
-  // useMemo를 사용하지 않고 expensiveValue 계산
-  console.log("계산기 작동!!");
-  const expensiveValue = count2 * 2;
+  // useMemo를 사용하여 expensiveValue 계산
+
+  const expensiveValue = useMemo(() => {
+    console.log("계산기 작동!!");
+    return count * 2;
+  }, [count]);
 
   console.log("렌더링2 작동!!");
 
