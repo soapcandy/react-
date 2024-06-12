@@ -1,10 +1,10 @@
 import "./App.css";
-import UseEffectPractice from "./components/UseEffectPractice";
+import UseMemoPractice from "./components/UseMemoPractice";
 
 function App() {
   return (
     <>
-      <UseEffectPractice />
+      <UseMemoPractice />
     </>
   );
 }
