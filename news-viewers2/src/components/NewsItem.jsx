@@ -8,7 +8,7 @@ const NewsItemBlock = styled.div`
       display: block;
       width: 160px;
       height: 100px;
-      object-fit: cover;
+      object-fit: cover; // 오브젝트 크기를 가로세로 비율을 유지하면서 화면을 꽉 채운다
     }
   }
   .contents {

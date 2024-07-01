@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import NewsItem from "./NewsItem";
 import styled from "styled-components";
 import axios from "axios";
@@ -19,7 +18,8 @@ const NewsListBlock = styled.div`
 
 const NewsList = ({ category }) => {
   const [loading, response, error] = usePromise(() => {
-    const query = category === "all" ? "" : `&category=${category}`;
+    // usePromise를 호출하여 loading, response, error 변수에 할당(*순서 중요*)
+    const query = category === "all" ? "" : `&category=${category}`; // query에 category값이 all이면 공백을, 그외에는 &카테고리 값을 저장
     return axios.get(
       `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=6b16364a82fb4060a0c0a421d9dff9ce`
     );
