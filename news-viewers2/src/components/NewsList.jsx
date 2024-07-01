@@ -19,6 +19,7 @@ const NewsListBlock = styled.div`
 const NewsList = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
+  console.log(category);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const categories = [
@@ -42,7 +43,7 @@ const CategoriesBlock = styled.div`
   }
 `;
 
-const Category = styled.div`
+const Category = styled(NavLink)`
   font-size: 1.125rem;
   cursor: pointer;
   white-space: pre;
@@ -53,29 +54,30 @@ const Category = styled.div`
   &:hover {
     color: #495057;
   }
-  ${(props) =>
-    props.active &&
-    `
-      font-weight: 600;
-      border-bottom: 2px solid #22b8cf;
-      color: #22b8cf;
-      &:hover {
-        color: #3bc9db;
-      }
-    `}
+
+  &.active {
+    font-weight: 600;
+    border-bottom: 2px solid #22b8cf;
+    color: #22b8cf;
+    &:hover {
+      color: #3bc9db;
+    }
+  }
+
   & + & {
     margin-left: 1rem;
   }
 `;
 
-const Categories = ({ category, onSelect }) => {
+const Categories = () => {
   return (
     <CategoriesBlock>
       {categories.map((c) => (
         <Category
-          key={c.name}
-          active={category === c.name}
-          onClick={() => onSelect(c.name)}
+          key={c.name} // 고유 키값
+          activeClassName="active" // 선택한 카테고리에 active 클래스 적용
+          exact={c.name === "all"} // 카테고리 이름이 all 이면 exact 값이 true로 변경 exact 값이 true면 url 값이 정확하게 일치할때만 active 클래스 적용
+          to={c.name === "all" ? "/" : `/${c.name}`} // 카테고리가 all 이면 루트로 이동 그 외에는 해당 경로로 이동
         >
           {c.text}
         </Category>
