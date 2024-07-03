@@ -4,11 +4,11 @@ function Search({ searchValue }) {
   const [inputValue, setInputValue] = useState();
 
   const handleSearch = (e) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target.value); // 입력받은 글자를 inputValue에 저장
   };
 
   const handleClick = () => {
-    searchValue(inputValue);
+    searchValue(inputValue); // 버튼 클릭 시 app.js로 값 전달
   };
 
   return (

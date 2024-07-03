@@ -10,7 +10,7 @@ function MovieList({ searchValue }) {
     const fetchMovieData = async () => {
       try {
         const response = await axios.get(
-          `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=8bf941816b80459f8ac9668dc2bfc236`
+          `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=8bf941816b80459f8ac9668dc2bfc236&movieNm=${searchValue}`
         );
         setMovieData(response.data.movieListResult.movieList);
       } catch (e) {
@@ -19,6 +19,8 @@ function MovieList({ searchValue }) {
     };
     fetchMovieData();
   }, [searchValue]);
+
+  console.log(searchValue);
 
   return (
     <>
