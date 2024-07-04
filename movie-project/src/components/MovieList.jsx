@@ -4,10 +4,10 @@ import "../styles/movieList.css";
 function MovieList({ movieData, searchValue }) {
   const { movieNm, movieNmEn, prdtYear, typeNm, directors, movieCd } =
     movieData;
+  const searchTerm = searchValue.trim();
+  const isMatch = movieData.movieNm.includes(searchTerm);
 
-  const isMatch = movieData.movieNm.includes(searchValue);
-
-  if (searchValue === "") {
+  if (searchTerm === "") {
     return <div></div>;
   }
 

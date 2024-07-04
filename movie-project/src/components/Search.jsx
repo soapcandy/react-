@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Search({ searchValue }) {
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState("");
 
   const handleSearch = (e) => {
     setInputValue(e.target.value); // 입력받은 글자를 inputValue에 저장
