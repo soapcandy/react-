@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom";
+import "../styles/movieList.css";
 
 function MovieList({ movieData, searchValue }) {
   const { movieNm, movieNmEn, prdtYear, typeNm, directors } = movieData;
 
-  const isMatch = movieData.movieNm.includes(searchValue); // searchValue가 포함된 값만 ismatch에 저장
+  const isMatch = movieData.movieNm.includes(searchValue);
 
   if (isMatch) {
     return (
-      <div>
-        <Link to={`/${movieData.movieCd}`} state={movieData}>
-          {movieNm} {movieNmEn}
+      <div className="movie-item">
+        <Link
+          to={`/${movieData.movieCd}`}
+          state={movieData}
+          className="movie-link"
+        >
+          <h3 className="movie-title">{movieNm}</h3>
+          <p className="movie-title-en">{movieNmEn}</p>
         </Link>
-        <div>
-          {prdtYear} {typeNm} {directors[0]?.peopleNm}
+        <div className="movie-info">
+          <p className="movie-year">{prdtYear}</p>
+          <p className="movie-type">{typeNm}</p>
+          <p className="movie-director">{directors[0]?.peopleNm}</p>
         </div>
       </div>
     );
@@ -20,4 +28,5 @@ function MovieList({ movieData, searchValue }) {
     return null;
   }
 }
+
 export default MovieList;

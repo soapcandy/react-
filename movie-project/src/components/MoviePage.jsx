@@ -1,18 +1,28 @@
 import Search from "./Search";
 import MovieList from "./MovieList";
+import "../styles/styles.css";
 
-function MoviePage({ movieData, searchValue, setSearchValue }) {
+function MoviePage({ movieData, searchValue, setSearchValue, loading }) {
   return (
-    <div style={{ display: "grid" }}>
+    <div>
       <div className="container">로고</div>
-      <Search searchValue={setSearchValue} />
-      {movieData.map((movie) => (
-        <MovieList
-          key={movie.movieCd}
-          movieData={movie}
-          searchValue={searchValue}
-        />
-      ))}
+      <div className="search-container">
+        <Search searchValue={setSearchValue} />
+      </div>
+      <div className="movie-list">
+        {loading ? (
+          <div className="container">로딩 중...</div>
+        ) : (
+          movieData.map((movie) => (
+            <MovieList
+              key={movie.movieCd}
+              movieData={movie}
+              searchValue={searchValue}
+              loading={loading}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 }

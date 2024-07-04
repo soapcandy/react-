@@ -26,10 +26,6 @@ function App() {
     fetchMovieData();
   }, [searchValue]);
 
-  if (loading) {
-    return <div className="container">로딩중</div>;
-  }
-
   return (
     <BrowserRouter>
       <div className="container">
@@ -41,6 +37,7 @@ function App() {
                 movieData={movieData}
                 setSearchValue={setSearchValue}
                 searchValue={searchValue}
+                loading={loading}
               />
             }
           />
