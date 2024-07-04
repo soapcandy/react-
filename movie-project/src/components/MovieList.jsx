@@ -1,37 +1,23 @@
-import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
-import MovieItem from "./MovieItem";
+import { Link } from "react-router-dom";
 
-function MovieList({ searchValue }) {
-  const [movieData, setMovieData] = useState([]);
+function MovieList({ movieData, searchValue }) {
+  const { movieNm, movieNmEn, prdtYear, typeNm, directors } = movieData;
 
-  useEffect(() => {
-    const fetchMovieData = async () => {
-      try {
-        const response = await axios.get(
-          `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=8bf941816b80459f8ac9668dc2bfc236&movieNm=${searchValue}`
-        );
-        setMovieData(response.data.movieListResult.movieList);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetchMovieData();
-  }, [searchValue]);
+  const isMatch = movieData.movieNm.includes(searchValue); // searchValue가 포함된 값만 ismatch에 저장
 
-  console.log(searchValue);
-
-  return (
-    <>
-      {movieData.map((movie) => (
-        <MovieItem
-          key={movie.movieCd}
-          movieData={movie}
-          searchValue={searchValue}
-        />
-      ))}
-    </>
-  );
+  if (isMatch) {
+    return (
+      <div>
+        <Link to={`/${movieData.movieCd}`} state={movieData}>
+          {movieNm} {movieNmEn}
+        </Link>
+        <div>
+          {prdtYear} {typeNm} {directors[0]?.peopleNm}
+        </div>
+      </div>
+    );
+  } else {
+    return null;
+  }
 }
 export default MovieList;

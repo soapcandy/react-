@@ -1,23 +1,22 @@
-function MovieItem({ movieData, searchValue }) {
-  const { movieNm, movieNmEn, prdtYear, typeNm, directors } = movieData;
+import { useLocation } from "react-router-dom";
 
-  const isMatch = movieData.movieNm.includes(searchValue); // searchValue가 포함된 값만 ismatch에 저장
+function MovieItem() {
+  const movieId = useLocation();
+  const item = movieId.state;
 
-  const moveDetail = () => {};
-  if (isMatch) {
-    return (
-      <>
-        {/* <div onClick={moveDetail}>{movieNm}</div> */}
-        <div>
-          {movieNm} {movieNmEn}
-        </div>
-        <div>
-          {prdtYear} {typeNm} {directors[0]?.peopleNm}
-        </div>
-      </>
-    );
-  } else {
-    return null;
-  }
+  console.log(movieId.state);
+  return (
+    <div>
+      <div>{item.movieNm}</div>
+      <div>{item.movieNmEn}</div>
+      <div>{item.nationAlt}</div>
+      <div>{item.openDt}</div>
+      <div>{item.prdtStatNm}</div>
+      <div>{item.prdtYear}</div>
+      <div>{item.repGenreNm}</div>
+      <div>{item.repNationNm}</div>
+      <div>{item.typeNm}</div>
+    </div>
+  );
 }
 export default MovieItem;
