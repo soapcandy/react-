@@ -5,7 +5,6 @@ function MovieItem() {
   const movieId = useLocation();
   const item = movieId.state;
 
-  console.log(movieId.state);
   return (
     <div className="movie-item-container">
       <div className="movie-item-title">

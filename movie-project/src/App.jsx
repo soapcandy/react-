@@ -1,52 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MoviePage from "./components/MoviePage";
 import MovieItem from "./components/MovieItem";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import "./styles/styles.css";
+import { MovieProvider } from "./contexts/MovieContext";
 
 function App() {
-  const [movieData, setMovieData] = useState([]);
-  const [searchValue, setSearchValue] = useState();
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchMovieData = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(
-          `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=8bf941816b80459f8ac9668dc2bfc236&movieNm=${searchValue}`
-        );
-        setMovieData(response.data.movieListResult.movieList);
-      } catch (e) {
-        console.log(e);
-      }
-      setLoading(false);
-    };
-    fetchMovieData();
-  }, [searchValue]);
-
   return (
     <BrowserRouter>
-      <div className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <MoviePage
-                movieData={movieData}
-                setSearchValue={setSearchValue}
-                searchValue={searchValue}
-                loading={loading}
-              />
-            }
-          />
-          <Route
-            path="/:movieId"
-            element={<MovieItem movieData={movieData} />}
-          />
-        </Routes>
-      </div>
+      <MovieProvider>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<MoviePage />} />
+            <Route path="/:movieId" element={<MovieItem />} />
+          </Routes>
+        </div>
+      </MovieProvider>
     </BrowserRouter>
   );
 }

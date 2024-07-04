@@ -1,8 +1,12 @@
 import Search from "./Search";
 import MovieList from "./MovieList";
 import "../styles/styles.css";
+import { useContext } from "react";
+import { MovieContext } from "../contexts/MovieContext";
 
-function MoviePage({ movieData, searchValue, setSearchValue, loading }) {
+function MoviePage() {
+  const { movieData, searchValue, setSearchValue, loading } =
+    useContext(MovieContext);
   return (
     <div>
       <div className="container">로고</div>
@@ -18,7 +22,6 @@ function MoviePage({ movieData, searchValue, setSearchValue, loading }) {
               key={movie.movieCd}
               movieData={movie}
               searchValue={searchValue}
-              loading={loading}
             />
           ))
         )}
