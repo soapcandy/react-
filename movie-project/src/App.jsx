@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MoviePage from "./components/MoviePage";
-import MovieItem from "./components/MovieItem";
+import MovieList from "./components/MovieList";
+import MovieDetail from "./components/MovieDetail";
 
 import { MovieProvider } from "./contexts/MovieContext";
 
@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
       <MovieProvider>
         <Routes>
-          <Route path="/" element={<MoviePage />} />
-          <Route path="/:movieId" element={<MovieItem />} />
+          <Route path="/" element={<MovieList />} />
+          <Route path="/:movieId" element={<MovieDetail />} />
         </Routes>
       </MovieProvider>
     </BrowserRouter>

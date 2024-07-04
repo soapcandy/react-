@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Search({ searchValue }) {
+function Search({ setSearchValue }) {
   const [inputValue, setInputValue] = useState("");
 
   const handleSearch = (e) => {
@@ -8,7 +8,7 @@ function Search({ searchValue }) {
   };
 
   const handleClick = () => {
-    searchValue(inputValue); // 버튼 클릭 시 app.js로 값 전달
+    setSearchValue(inputValue); // 버튼 클릭 시 app.js로 값 전달
   };
 
   return (
