@@ -5,7 +5,7 @@ export const MovieContext = createContext();
 
 export const MovieProvider = ({ children }) => {
   const [movieData, setMovieData] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,12 @@ export const MovieProvider = ({ children }) => {
 
   return (
     <MovieContext.Provider
-      value={{ movieData, searchValue, setSearchValue, loading }}
+      value={{
+        movieData,
+        searchValue,
+        setSearchValue,
+        loading,
+      }}
     >
       {children}
     </MovieContext.Provider>

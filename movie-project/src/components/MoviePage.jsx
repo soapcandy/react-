@@ -1,6 +1,6 @@
 import Search from "./Search";
 import MovieList from "./MovieList";
-import "../styles/styles.css";
+import "../styles/moviePage.css";
 import { useContext } from "react";
 import { MovieContext } from "../contexts/MovieContext";
 

@@ -2,18 +2,19 @@ import { Link } from "react-router-dom";
 import "../styles/movieList.css";
 
 function MovieList({ movieData, searchValue }) {
-  const { movieNm, movieNmEn, prdtYear, typeNm, directors } = movieData;
+  const { movieNm, movieNmEn, prdtYear, typeNm, directors, movieCd } =
+    movieData;
 
   const isMatch = movieData.movieNm.includes(searchValue);
+
+  if (searchValue === "") {
+    return <div></div>;
+  }
 
   if (isMatch) {
     return (
       <div className="movie-item">
-        <Link
-          to={`/${movieData.movieCd}`}
-          state={movieData}
-          className="movie-link"
-        >
+        <Link to={`/${movieCd}`} className="movie-link">
           <h3 className="movie-title">{movieNm}</h3>
           <p className="movie-title-en">{movieNmEn}</p>
         </Link>
