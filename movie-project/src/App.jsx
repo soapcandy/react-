@@ -1,9 +1,9 @@
-import "./styles/styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MoviePage from "./components/MoviePage";
 import MovieItem from "./components/MovieItem";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./styles/styles.css";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
@@ -27,24 +27,29 @@ function App() {
   }, [searchValue]);
 
   if (loading) {
-    return <div>로딩중</div>;
+    return <div className="container">로딩중</div>;
   }
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <MoviePage
-              movieData={movieData}
-              setSearchValue={setSearchValue}
-              searchValue={searchValue}
-            />
-          }
-        />
-        <Route path="/:movieId" element={<MovieItem movieData={movieData} />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <MoviePage
+                movieData={movieData}
+                setSearchValue={setSearchValue}
+                searchValue={searchValue}
+              />
+            }
+          />
+          <Route
+            path="/:movieId"
+            element={<MovieItem movieData={movieData} />}
+          />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

@@ -3,8 +3,8 @@ import MovieList from "./MovieList";
 
 function MoviePage({ movieData, searchValue, setSearchValue }) {
   return (
-    <>
-      <div>로고</div>
+    <div style={{ display: "grid" }}>
+      <div className="container">로고</div>
       <Search searchValue={setSearchValue} />
       {movieData.map((movie) => (
         <MovieList
@@ -13,7 +13,7 @@ function MoviePage({ movieData, searchValue, setSearchValue }) {
           searchValue={searchValue}
         />
       ))}
-    </>
+    </div>
   );
 }
 export default MoviePage;
