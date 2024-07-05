@@ -12,7 +12,8 @@
   margin-bottom: 10px;
 }
 
-.movie-item-info {
+.movie-item-info div {
   font-size: 16px;
   margin-bottom: 5px;
+  font-weight: bold;
 }

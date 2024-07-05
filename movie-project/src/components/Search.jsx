@@ -12,10 +12,16 @@ function Search({ setSearchValue }) {
     setSearchValue(inputValue); // 버튼 클릭 시 app.js로 값 전달
   };
 
+  const enter = (e) => {
+    if (e.code === "Enter") {
+      setSearchValue(inputValue);
+    }
+  };
+
   return (
     <div>
       <div className="InputTextArea">
-        <input type="textarea" onChange={handleSearch} />
+        <input type="textarea" onChange={handleSearch} onKeyUp={enter} />
         <button onClick={handleClick}>
           <img src="src\img\pngwing.png" alt="버튼" />
         </button>
