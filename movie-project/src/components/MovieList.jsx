@@ -5,8 +5,7 @@ import { useContext } from "react";
 import { MovieContext } from "../contexts/MovieContext";
 
 function MoviePage() {
-  const { movieData, searchValue, setSearchValue, loading } =
-    useContext(MovieContext);
+  const { movieData, setSearchValue, loading } = useContext(MovieContext);
   return (
     <div>
       <div className="logo">로고</div>
@@ -18,11 +17,7 @@ function MoviePage() {
           <div className="loading">로딩 중...</div>
         ) : (
           movieData.map((movie) => (
-            <MovieItem
-              key={movie.movieCd}
-              movie={movie}
-              searchValue={searchValue}
-            />
+            <MovieItem key={movie.movieCd} movie={movie} />
           ))
         )}
       </div>

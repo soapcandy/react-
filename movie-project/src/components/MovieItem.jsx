@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import "../styles/movieItem.css";
+import { useContext } from "react";
+import { MovieContext } from "../contexts/MovieContext";
 
-function MovieList({ movie, searchValue }) {
+function MovieList({ movie }) {
   const { movieNm, movieNmEn, prdtYear, typeNm, directors, movieCd } = movie;
-  const searchTerm = searchValue.trim();
-  const isMatch = movie.movieNm.includes(searchTerm);
+  const { searchValue } = useContext(MovieContext);
+  const isMatch = movie.movieNm.includes(searchValue);
 
-  if (searchTerm === "") {
+  console.log(searchValue);
+
+  if (searchValue === "") {
     return <div></div>;
   }
 

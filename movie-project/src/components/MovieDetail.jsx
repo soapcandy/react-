@@ -31,17 +31,20 @@ function MovieItem() {
         {movieDetail.movieNm} {movieDetail.movieNmEn}
       </div>
       <div className="movie-item-info">
-        제작국가: {movieDetail ? movieDetail.nations[0]?.nationNm : "정보없음"}
-      </div>
-      <div className="movie-item-info">상영시간: {movieDetail.showTm}</div>
-      <div className="movie-item-info">제작상태: {movieDetail.prdtStatNm}</div>
-      <div className="movie-item-info">제작연도: {movieDetail.prdtYear}</div>
-      <div className="movie-item-info">
-        장르명: {movieDetail ? movieDetail.genres[0]?.genreNm : "정보없음"}
-      </div>
-      <div className="movie-item-info">유형: {movieDetail.typeNm}</div>
-      <div className="movie-item-info">
-        감독: {movieDetail ? movieDetail.directors[0]?.peopleNm : "정보없음"}
+        <div>
+          제작국가:{" "}
+          {movieDetail ? movieDetail.nations[0]?.nationNm : "정보없음"}
+        </div>
+        <div>상영시간: {movieDetail.showTm}</div>
+        <div>제작상태: {movieDetail.prdtStatNm}</div>
+        <div>제작연도: {movieDetail.prdtYear}</div>
+        <div>
+          장르명: {movieDetail ? movieDetail.genres[0]?.genreNm : "정보없음"}
+        </div>
+        <div>유형: {movieDetail.typeNm}</div>
+        <div>
+          감독: {movieDetail ? movieDetail.directors[0]?.peopleNm : "정보없음"}
+        </div>
       </div>
     </div>
   );
