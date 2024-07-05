@@ -8,8 +8,6 @@ function MovieList({ movie }) {
   const { searchValue } = useContext(MovieContext);
   const isMatch = movie.movieNm.includes(searchValue);
 
-  console.log(searchValue);
-
   if (searchValue === "") {
     return <div></div>;
   }

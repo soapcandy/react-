@@ -9,17 +9,21 @@ export const MovieProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    const searchTerm = searchValue.trim();
+    setSearchValue(searchTerm);
     const fetchMovieData = async () => {
       setLoading(true);
       try {
-        const response = await MovieAPIService(searchValue);
+        const response = await MovieAPIService(searchTerm);
         setMovieData(response);
       } catch (e) {
         console.log(e);
       }
       setLoading(false);
     };
-    fetchMovieData();
+    if (searchTerm !== "") {
+      fetchMovieData();
+    }
   }, [searchValue]);
 
   return (
