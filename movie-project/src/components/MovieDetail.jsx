@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import "../styles/movieDetail.css";
 import { useLayoutEffect, useState } from "react";
-import axios from "axios";
+import { MovieDetailAPIService } from "../services/MovieDetailAPIService";
 
 function MovieItem() {
   const { movieId } = useParams();
@@ -12,10 +12,8 @@ function MovieItem() {
     const fetchMovieData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          `http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=8bf941816b80459f8ac9668dc2bfc236&movieCd=${movieId}`
-        );
-        setMovieDetail(response.data.movieInfoResult.movieInfo);
+        const response = await MovieDetailAPIService(movieId);
+        setMovieDetail(response);
       } catch (e) {
         console.log(e);
       }
