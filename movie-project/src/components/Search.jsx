@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/search.css";
 
 function Search({ setSearchValue }) {
   const [inputValue, setInputValue] = useState("");
@@ -13,8 +14,12 @@ function Search({ setSearchValue }) {
 
   return (
     <div>
-      <input type="textarea" onChange={handleSearch} />
-      <button onClick={handleClick}>버튼</button>
+      <div className="InputTextArea">
+        <input type="textarea" onChange={handleSearch} />
+        <button onClick={handleClick}>
+          <img src="src\img\pngwing.png" alt="버튼" />
+        </button>
+      </div>
     </div>
   );
 }
